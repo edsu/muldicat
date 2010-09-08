@@ -1,0 +1,26 @@
+This is a simple conversion tool to make the Multilingual Dictionary of 
+Cataloging Terms and Concepts (MulDiCat) available as SKOS. MulDiCat is 
+currently made available as a table in a Word document. Ideally there would 
+be software managing the MulDiCat namespace, which allowed edits, and provided
+an audit trail. This conversion script is meant to only be used as a
+bootstrappnig mechanism to demonstrate the use of SKOS.
+
+Follow these steps to convert the Word document into RDF/XML.
+
+1. Open the Word document in Open Office
+2. Create a new spreadsheet: File -> New -> Spreadsheet
+3. Select the table: Table -> Select -> Table
+4. Copy the table: Edit -> Copy
+5. Paste the table into the first cell of the spreadsheet: Edit -> Paste
+6. Save as CSV: File -> Save As -> Set File Type: Text CSV
+
+Once you've got the CSV file in hand you should be able to generate the RDF/XML
+with the following command:
+
+  rdfize Muldicat.csv > Muldicat.rdf
+
+Requirements:
+
+- python
+- rdflib 
+
