@@ -1,8 +1,13 @@
 This is a simple conversion tool to make the Multilingual Dictionary of 
-Cataloging Terms and Concepts (MulDiCat) available as SKOS. MulDiCat is 
-currently made available as a table in a Word document. Ideally there would 
-be software managing the concept scheme, which would allow edits, and provide
-an audit trail--this script is only meant to demonstrate the use of SKOS.
+Cataloging Terms and Concepts (MulDiCat) available as SKOS. More information
+about MulDiCat can be found at:
+
+http://www.ifla.org/en/publications/multilingual-dictionary-of-cataloguing-terms-and-concepts-muldicat
+
+MulDiCat is currently made available as a table in a Word document. Ideally 
+there would be software managing the concept scheme, which would allow edits, 
+and provide an audit trail--this script is only meant to demonstrate the use 
+of SKOS.
 
 For your convenience the current MulDiCat SKOS file is in the same directory 
 as this README file: MuldiCat.rdf. Follow these steps to convert a new version 
