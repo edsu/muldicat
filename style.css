@@ -1,0 +1,21 @@
+td {
+    border: thin solid black;
+    margin: 0px;
+    vertical-align: top;
+}
+
+th.concept {
+    width: 20%;
+}
+
+th.definition {
+    width: 40%;
+}
+
+th.see_also {
+    width: 20%;
+}
+
+th.relations {
+    width: 20%;
+}

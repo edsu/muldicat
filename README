@@ -26,6 +26,7 @@ Requirements:
 - Open Office
 - Python
 - rdflib 
+- lxml
 
 Questions, comments, complaints:
 
