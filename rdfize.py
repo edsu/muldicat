@@ -18,15 +18,45 @@ from rdflib.graph import ConjunctiveGraph
 from rdflib.term import URIRef, Literal
 from rdflib.namespace import Namespace, RDF
 
+muldicat = URIRef("http://iflastandards.info/ns/muldicat")
+
 description = \
 """
-The Multilingual dictionary of cataloguing terms and concepts contains definitions for many terms and concepts used by the library cataloguing community. Terms and definitions are available in English and a variety of other languages.
+<div>
+<p>
+The Multilingual dictionary of cataloguing terms and concepts contains 
+definitions for many terms and concepts used by the library cataloguing 
+community. Terms and definitions are available in English and a variety 
+of other languages.
+</p>
 
-The MulDiCat project was begun by Monika Muennich in 1998 for IFLA's Cataloguing Section. It was stored in a proprietary database developed by Bernard Eversberg in 2003. It has now re-emerged in part as a Word table, soon to be a SKOS file on the IFLA Namespace. 
+<p>
+The MulDiCat project was begun by Monika Muennich in 1998 for IFLA's 
+Cataloguing Section. It was stored in a proprietary database developed 
+by Bernard Eversberg in 2003. It has now re-emerged in part as a Word 
+table, soon to be a SKOS file on the IFLA Namespace. 
+</p>
 
-It is intended to be used for authoritative translations of IFLA cataloguing standards and related documents.  The terms reflect international agreements on terms to use for these cataloguing and classification concepts -- in particular, the agreements reached during the IME ICC (IFLA Meetings of Experts on an International Cataloguing Code) that reviewed FRBR, FRAD, and ISBD terminology while developing the International Cataloguing Principles (ICP).  As additional official translations of ICP are added to IFLANET, MulDiCat has been updated to include terms in these additional langauges.
+<p>
+It is intended to be used for authoritative translations of IFLA cataloguing 
+standards and related documents.  The terms reflect international agreements 
+on terms to use for these cataloguing and classification concepts -- in 
+particular, the agreements reached during the IME ICC (IFLA Meetings of 
+Experts on an International Cataloguing Code) that reviewed FRBR, FRAD, and 
+ISBD terminology while developing the International Cataloguing Principles 
+(ICP).  As additional official translations of ICP are added to IFLANET, 
+MulDiCat has been updated to include terms in these additional langauges.
+</p>
 
-Other terms will be added as IFLA reaches international agreement for them through the work of the Cataloguing Section and the Classification & Indexing Sections, as well as other units throughout IFLA interested and involved in bibliographic standards.  Questions about this dictionary of terms can be sent to Barbara Tillett, btil@loc.gov.
+<p>
+Other terms will be added as IFLA reaches international agreement for them
+through the work of the Cataloguing Section and the Classification &amp; 
+Indexing Sections, as well as other units throughout IFLA interested and 
+involved in bibliographic standards.  Questions about this dictionary of 
+terms can be sent to Barbara Tillett, 
+<a href="mailto:btil@loc.gov">btil@loc.gov</a>.
+</p>
+</div>
 """
 
 languages = {
@@ -55,6 +85,7 @@ languages = {
 
 SKOS = Namespace('http://www.w3.org/2004/02/skos/core#')
 DCT = Namespace('http://purl.org/dc/terms/')
+XHTML = Namespace('http://www.w3.org/1999/xhtml')
 
 
 def unicode_csv_reader(unicode_csv_data, dialect=csv.excel, **kwargs):
@@ -82,10 +113,9 @@ def convert(muldicat_csv):
     g.bind('dct', DCT)
 
     # add concept scheme
-    muldicat = URIRef("http://iflastandards.info/ns/muldicat")
     g.add((muldicat, RDF.type, SKOS.ConceptScheme))
     g.add((muldicat, DCT.title, Literal("Multilingual Dictionary of Cataloging Terms and Concepts", lang="en")))
-    g.add((muldicat, DCT.description, Literal(description, lang="en")))
+    g.add((muldicat, DCT.description, Literal(description, datatype=XHTML)))
     g.add((muldicat, DCT.modified, Literal(datetime.date.today())))
 
     # work through each row of the spreadsheet, adding concepts as we go
